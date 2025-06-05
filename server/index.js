@@ -2,8 +2,18 @@ import express from "express";
 import connectDB from "./utils/db.js";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.js";
+import cloudinary from "cloudinary";
+
 
 dotenv.config();
+
+// cloudinary config 
+cloudinary.v2.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure: true,
+});
 
 const app = express();
 

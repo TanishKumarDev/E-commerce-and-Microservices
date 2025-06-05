@@ -79,3 +79,8 @@ export const myProfile = TryCatch(async (req, res) => {
 
   res.json(user);
 });
+
+export const getUser = TryCatch(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  res.json(user);
+});
