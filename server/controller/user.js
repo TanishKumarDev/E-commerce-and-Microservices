@@ -84,3 +84,25 @@ export const getUser = TryCatch(async (req, res) => {
   const user = await User.findById(req.user._id);
   res.json(user);
 });
+
+/**
+ * Get all users (Admin only)
+ * @route GET /api/user/all
+ * @access Private (Admin only)
+ * @description Retrieves a list of all users. Only accessible by admin users.
+ */
+export const getAllUsers = TryCatch(async (req, res) => {
+  // Check if user has admin role
+  if (req.user.role !== "admin")
+    return res.status(403).json({
+      message: "You are not admin",
+    });
+
+  // Get all users
+  const users = await User.find().select("-__v");
+
+  res.json({
+    success: true,
+    users,
+  });
+});

@@ -3,7 +3,7 @@ import connectDB from "./utils/db.js";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.js";
 import cloudinary from "cloudinary";
-
+import productRoutes from "./routes/product.js";
 
 dotenv.config();
 
@@ -24,7 +24,10 @@ app.use(express.json());
 
 // using routes
 app.use("/api", userRoutes);
+app.use("/api", productRoutes);
 
+
+// connect to db
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
     connectDB();
