@@ -7,11 +7,17 @@ dotenv.config();
 
 const app = express();
 
+// middleware BEFORE your routes
+app.use(express.json()); // Parses JSON bodies
+
 const PORT = process.env.PORT || 5000;
 
-// app.get("/", (req, res) => {
-//     res.send("Hello from server");
-// });
+// importing routes
+import userRoutes from "./routes/user.js";
+
+// using routes
+app.use("/api", userRoutes);
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

@@ -1,0 +1,33 @@
+# Ignore node_modules inside any subproject (like server/, future services/)
+**/node_modules/
+
+# Logs
+**/*.log
+logs/
+**/logs/
+
+# OS & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Env files
+**/.env
+**/.env.*.local
+
+# Build/Dist folders (if used)
+**/dist/
+**/build/
+
+# NPM lock (optional to ignore, but usually tracked)
+# **/package-lock.json
+
+# Docker & coverage (future use)
+docker-compose.override.yml
+coverage/
+.nyc_output/
+
+# TypeScript (future-proofing)
+*.tsbuildinfo
